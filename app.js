@@ -52,7 +52,6 @@ app.delete("/api/delete/:id", async (req, res) => {
   // http://localhost:4000/api/delete/64e7531b5a50c3d867c8dfda
   try {
     const id = req.params.id;
-    console.log(`Param ID ${id}`);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({
@@ -117,8 +116,6 @@ app.post("/api/add", async (req, res) => {
   // }
   try {
     const { insureName, policies } = req.body;
-    console.log(insureName);
-    console.log(policies.length);
     if (!insureName || !policies || policies.length === 0) {
       res.status(400).send({
         headerData: {

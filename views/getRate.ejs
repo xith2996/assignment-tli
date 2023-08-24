@@ -175,9 +175,6 @@
         document.getElementById("commissionAge").value,
         10
       );
-      console.log(
-        `commissionYear: ${commissionYear} - commissionAge: ${commissionAge}`
-      );
       document.getElementById("commission_result").textContent = `${
         commissionRate(commissionYear, commissionAge) * 100
       } %`;
@@ -195,9 +192,6 @@
         document.getElementById("overidingType").checked === true
           ? "Annual"
           : "NonAnnual";
-      console.log(
-        `overidingAge: ${overidingAge} - overidingType: ${overidingType}`
-      );
       document.getElementById("overiding_result").textContent = `${
         overidingRate(overidingAge, overidingType) * 100
       } %`;
