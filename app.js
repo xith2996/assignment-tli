@@ -49,6 +49,7 @@ app.get("/", indexController);
 app.get("/getrate", getRateController);
 
 app.delete("/api/delete/:id", async (req, res) => {
+  // http://localhost:4000/api/delete/64e7531b5a50c3d867c8dfda
   try {
     const id = req.params.id;
     console.log(`Param ID ${id}`);
@@ -103,6 +104,17 @@ app.get("/api/fetchall", async (req, res) => {
 });
 
 app.post("/api/add", async (req, res) => {
+  //   {
+  //     "insureName": "Tanasak",
+  //     "policies": [
+  //        {
+  //           "policyNo": "P00099",
+  //           "policyType": "AB",
+  //           "status": "A",
+  //           "agentID": "00000004"
+  //        }
+  //     ]
+  // }
   try {
     const { insureName, policies } = req.body;
     console.log(insureName);
@@ -145,6 +157,15 @@ app.post("/api/add", async (req, res) => {
 });
 
 app.post("/api/fetch", validateRequest, async (req, res) => {
+  //   {
+  //     "headerData": {
+  //         "messageID": "12345ABC",
+  //         "sentDateTime": "2023-08-24T12:00:00Z"
+  //     },
+  //     "requestRecord": {
+  //         "insureName": "Mr.A"
+  //     }
+  // }
   try {
     const insured = await Insured.findOne({
       insureName: req.body.requestRecord.insureName,
