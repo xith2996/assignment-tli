@@ -2,10 +2,10 @@
 
 ## Table of contents
   - [Development Environment](#development-environment)
-  - [Build & Run](#build&run)
+  - [Build and Run](#build-and-run)
   - [Docker](#docker)
-  - [Environment](#env)
-  - [APIs](#api)
+  - [Environment](#environment)
+  - [APIs](#apis)
 
 ## Development Environment
 
@@ -21,7 +21,7 @@
 
 - MongoDB
 
-## Build & Run
+## Build and Run
 
 **Steps**
 
