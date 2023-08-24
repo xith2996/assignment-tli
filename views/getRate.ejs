@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      href="/docs/5.0/assets/img/favicons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.0/assets/img/favicons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.0/assets/img/favicons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json" />
+    <link
+      rel="mask-icon"
+      href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
+      color="#7952b3"
+    />
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico" />
+    <meta name="theme-color" content="#7952b3" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .form-signin {
+        margin-top: 15% !important;
+      }
+      button {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      }
+      .result {
+        margin: 20px 0px;
+        border: 2px solid #405ba3;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: rgb(125 125 125 / 15%) 0px 5px 15px 0px;
+        font-weight: 700;
+        font-size: 2em;
+        height: 84px;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/signin.css" rel="stylesheet" />
+  </head>
+  <body class="text-center">
+    <main class="form-signin" style="margin-right: 10%">
+      <form id="commissionForm">
+        <h1 class="h3 mb-3 fw-normal">Get Commission Rate</h1>
+
+        <div class="form-floating mb-4">
+          <input
+            type="number"
+            name="commissionYear"
+            class="form-control"
+            id="commissionYear"
+            placeholder="year"
+          />
+          <label for="commissionYear">Year</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input
+            type="number"
+            name="commissionAge"
+            class="form-control"
+            id="commissionAge"
+            placeholder="age"
+          />
+          <label for="commissionAge">Age</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary mb-4" type="submit">
+          Get Rate
+        </button>
+        <h4>Rate:</h4>
+        <div id="commission_result" class="result"></div>
+      </form>
+    </main>
+    <main class="form-signin" style="margin-left: 10%">
+      <form id="overidingForm">
+        <h1 class="h3 mb-3 fw-normal">Get Overiding Rate</h1>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            name="overidingAge"
+            class="form-control"
+            id="overidingAge"
+            placeholder="age"
+          />
+          <label for="overidingAge">Age</label>
+        </div>
+        <div class="form-check form-switch mb-4" style="text-align: left">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="overidingType"
+            checked
+          />
+          <label class="form-check-label" for="overidingType">Annual</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary mb-4" type="submit">
+          Get Rate
+        </button>
+        <h4>Rate:</h4>
+        <div id="overiding_result" class="result"></div>
+      </form>
+    </main>
+    <button
+      class="w-100 btn btn-lg btn-danger"
+      style="position: fixed; top: 20px; left: 20px;width: 180px !important;"
+      onclick="location.href='/';"
+    >
+      Test API
+    </button>
+  </body>
+</html>
+
+<script>
+  document
+    .getElementById("commissionForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let commissionYear = parseInt(
+        document.getElementById("commissionYear").value,
+        10
+      );
+      let commissionAge = parseInt(
+        document.getElementById("commissionAge").value,
+        10
+      );
+      console.log(
+        `commissionYear: ${commissionYear} - commissionAge: ${commissionAge}`
+      );
+      document.getElementById("commission_result").textContent = `${
+        commissionRate(commissionYear, commissionAge) * 100
+      } %`;
+    });
+
+  document
+    .getElementById("overidingForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let overidingAge = parseInt(
+        document.getElementById("overidingAge").value,
+        10
+      );
+      let overidingType =
+        document.getElementById("overidingType").checked === true
+          ? "Annual"
+          : "NonAnnual";
+      console.log(
+        `overidingAge: ${overidingAge} - overidingType: ${overidingType}`
+      );
+      document.getElementById("overiding_result").textContent = `${
+        overidingRate(overidingAge, overidingType) * 100
+      } %`;
+    });
+
+  function commissionRate(year, age) {
+    if (year === 1) {
+      if (age >= 0 && age <= 60) {
+        return 0.02; // 2%
+      }
+    } else if (year === 2) {
+      if (age >= 0 && age <= 50) {
+        return 0.01; // 1%
+      } else if (age >= 51 && age <= 60) {
+        return 0.02; // 2%
+      }
+    } else if (year === 3) {
+      if (age >= 0 && age <= 50) {
+        return 0.01; // 1%
+      } else if (age >= 51 && age <= 60) {
+        return 0.01; // 1%
+      }
+    }
+    return 0; // Default return value
+  }
+
+  function overidingRate(age, policyType) {
+    if (age >= 0 && age <= 50) {
+      if (policyType === "Annual") {
+        return 0.2; // 20%
+      } else if (policyType === "NonAnnual") {
+        return 0.16; // 16%
+      }
+    } else if (age >= 51 && age <= 60) {
+      return 0.13; // 13% for all
+    } else {
+      return 0; // not specified
+    }
+  }
+</script>
