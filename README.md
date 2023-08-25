@@ -45,10 +45,10 @@ npm run dev
 ## Docker
 ```sh
 # Pull from Docker Hub
-docker pull xith/assignment-tli:latest
+docker pull xith/assignment-tli:v1.0
 
 # Run docker
-docker run -p 4000:4000 xith/assignment-tli:latest
+docker run -p 4000:4000 xith/assignment-tli:v1.0
 ```
 
 ## Environment
