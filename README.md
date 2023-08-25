@@ -61,6 +61,7 @@ There is two variable that must config in `.env`
 # Mock database created for assignment. Don't include sensitive information.
 MONGO_URI=mongodb+srv://admin:311441@cluster0.hcajioe.mongodb.net/?retryWrites=true&w=majority;
 
+API_PORT=4000
 ```
 
 ## APIs
